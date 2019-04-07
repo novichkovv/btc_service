@@ -1,0 +1,22 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: novichkov
+ * Date: 14.09.17
+ * Time: 12:53
+ */
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+//error_reporting(E_ALL);
+date_default_timezone_set('UTC');
+define('DEVELOPMENT_MODE', true);
+define('TEST_MODE', true);
+define('DS', DIRECTORY_SEPARATOR);
+if(!defined('ROOT_DIR')) {
+    define('ROOT_DIR', str_replace('public', '', rtrim(realpath($_SERVER['DOCUMENT_ROOT']), DS)));
+}
+define('SITE_DIR', 'https://' . str_replace('https://', '', $_SERVER['HTTP_HOST'] . '/'));
+define('PROTECTED_DIR', ROOT_DIR . 'protected' . DS);
+define('CORE_DIR', PROTECTED_DIR . 'core' . DS);
+define('PUBLIC_DIR', ROOT_DIR . 'public' . DS);
+
+define('APP_SECRET', '');
