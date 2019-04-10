@@ -9,9 +9,9 @@ class addresses_controller extends controller
 {
     public function generate()
     {
-//        $btc = new bitcoin_class();
-//        $address = $btc->generateAddress();
-//        $this->success(['address' => $address]);
+        $btc = new bitcoin_class();
+        $address = $btc->generateAddress();
+        $this->success(['address' => $address]);
         $this->success();
     }
 }

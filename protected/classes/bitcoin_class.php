@@ -11,7 +11,7 @@ class bitcoin_class extends base
     public function __construct()
     {
         require PROTECTED_DIR . '/vendor/autoload.php';
-        $this->client  = new \Nbobtc\Http\Client('https://username:password@localhost:18332');
+        $this->client  = new \Nbobtc\Http\Client('https://btc_service:0YALCkhadlkja&G%ADKJhag@localhost:18333');
     }
 
     private function command($method, $param = null)
@@ -24,6 +24,6 @@ class bitcoin_class extends base
 
     public function generateAddress()
     {
-        return $this->command('getnewaddress');
+        return $this->command('getwalletinfo');
     }
 }
