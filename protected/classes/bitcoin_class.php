@@ -8,6 +8,7 @@
 class bitcoin_class extends base
 {
     private $client;
+    const MIN_CONFIRMATIONS = 2;
     public function __construct()
     {
         $this->client = new \Nbobtc\Http\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@127.0.0.1:18332');
@@ -69,9 +70,34 @@ class bitcoin_class extends base
 
     }
 
-    public function sendFrom($from, $to, $amount)
+    public function sendFrom($from, $to, $amount, $tx_fee = 0.000001)
     {
+//        $res = $this->command('settxfee');
         $res = $this->command('listunspent');
+        $txs = [];
+        foreach ($res['result'] as $item) {
+            if($item['confirmations'] < self::MIN_CONFIRMATIONS) {
+                continue;
+            }
+            if($item['address'] === $from) {
+                if($item['amount'] + $tx_fee <= $amount) {
+                    $txs[] = [
+                        'amount' => $amount,
+                        'tx_id' => $item['txid'],
+                    ];
+                    $amount = 0;
+                } else {
+                    $txs[] = [
+                        'amount' => $item['amount'],
+                        'tx_id' => $item['txid'],
+                    ];
+                    $amount -= ($item['amount'] + $tx_fee);
+                }
+            }
+        }
+        if($tx_fee) {
+            print_r($tx_fee);
+        }
         print_r($res);
 
         $res = $this->command('sendfrom', [$from, $to, $amount]);
