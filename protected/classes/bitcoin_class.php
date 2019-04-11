@@ -19,12 +19,12 @@ class bitcoin_class extends base
 ////        $this->client = new Denpa\Bitcoin\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@localhost:8332/');
 ////        $block = $this->client->request('getwalletinfo');
 ////        var_dump($block);exit;
-        $driver = new \Nbobtc\Http\Driver\CurlDriver();
-        $driver
-            ->addCurlOption(CURLOPT_VERBOSE, true)
-            ->addCurlOption(CURLOPT_STDERR, '/var/logs/curl.err');
+//        $driver = new \Nbobtc\Http\Driver\CurlDriver();
+//        $driver
+//            ->addCurlOption(CURLOPT_VERBOSE, true)
+//            ->addCurlOption(CURLOPT_STDERR, '/var/logs/curl.err');
         $this->client  = new \Nbobtc\Http\Client('http://127.0.0.1:18332');
-        $this->client->withDriver($driver);
+//        $this->client->withDriver($driver);
     }
 
     private function command($method, $param = null)
