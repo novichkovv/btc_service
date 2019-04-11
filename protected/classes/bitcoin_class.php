@@ -89,10 +89,10 @@ class bitcoin_class extends base
                     break;
                 } else {
                     $txs[] = [
-                        'amount' => $item['amount'],
+                        'amount' => $item['amount'] - $tx_fee,
                         'tx_id' => $item['txid'],
                     ];
-                    $amount -= ($item['amount'] + $tx_fee);
+                    $amount -= $item['amount'];
                 }
             }
         }
