@@ -23,7 +23,13 @@ class bitcoin_class extends base
 
     public function generateAddress()
     {
-        return $this->command('getnewaddress');
+        $res = $this->command('getnewaddress');
+        if($res['result']) {
+            return $res['result'];
+        } else {
+            $this->error($res['error']);
+            return false;
+        }
     }
 
     public function getWalletInfo()
@@ -43,5 +49,14 @@ class bitcoin_class extends base
             return true;
         }
         return false;
+    }
+
+    protected function error($error = 'Unexpected Error!')
+    {
+        $response = new response();
+        $response->withStatus(500);
+        $response->withContentType('application/json');
+        $response->withJson(['status' => 'fail', 'error' => $error]);
+        $response->respond();
     }
 }
