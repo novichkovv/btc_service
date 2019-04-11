@@ -71,6 +71,8 @@ class bitcoin_class extends base
 
     public function sendFrom($from, $to, $amount)
     {
+        $res = $this->command('listunspent');
+        print_r($res);
 
         $res = $this->command('sendfrom', [$from, $to, $amount]);
         if(isset($res['result'])) {
