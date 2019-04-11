@@ -7,16 +7,10 @@
  */
 class addresses_controller extends controller
 {
-    private $btc;
-
-    protected function init()
-    {
-        $this->btc = new bitcoin_class();
-    }
-
     public function generate()
     {
-        $address = $this->btc->generateAddress();
+        $btc = new bitcoin_class();
+        $address = $btc->generateAddress();
         $this->success(['address' => $address]);
     }
 
