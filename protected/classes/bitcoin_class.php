@@ -11,7 +11,7 @@ class bitcoin_class extends base
     public function __construct()
     {
         require_once PROTECTED_DIR . 'easy.php';
-        $bitcoin = new Bitcoin(RPC_USER,RPC_PASSWORD,"localhost","18333");
+        $bitcoin = new Bitcoin(RPC_USER,RPC_PASSWORD,"localhost","18332");
         $b = $bitcoin->getwalletinfo();
         var_dump($b);exit;
 //        require PROTECTED_DIR . '/vendor/autoload.php';
