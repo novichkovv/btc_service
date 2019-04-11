@@ -139,11 +139,13 @@ class Bitcoin
         curl_setopt_array($curl, $options);
         // Execute the request and decode to an array
         $this->raw_response = curl_exec($curl);
+        var_dump($this->raw_response);
         $this->response     = json_decode($this->raw_response, true);
         // If the status is not 200, something is wrong
         $this->status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         // If there was no error, this will be an empty string
         $curl_error = curl_error($curl);
+        var_dump($curl_error);
         curl_close($curl);
         if (!empty($curl_error)) {
             $this->error = $curl_error;
