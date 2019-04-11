@@ -80,7 +80,7 @@ class bitcoin_class extends base
                 continue;
             }
             if($item['address'] === $from) {
-                if($item['amount'] >= $amount - $tx_fee) {
+                if($item['amount'] >= $amount + $tx_fee) {
                     $txs[] = [
                         'amount' => $amount,
                         'tx_id' => $item['txid'],
