@@ -1,5 +1,0 @@
-{
-    "require": {
-        "denpa/php-bitcoinrpc": "^2.1"
-    }
-}

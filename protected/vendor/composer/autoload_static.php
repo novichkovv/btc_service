@@ -7,6 +7,9 @@ namespace Composer\Autoload;
 class ComposerStaticInite7a9abc80c5a911a1f03fa11b9a02bd2
 {
     public static $files = array (
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'cf97c57bfe0f23854afd2f3818abb7a0' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/create_uploaded_file.php',
         '9bf37a3d0dad93e29cb4e1b1bfab04e9' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_headers_from_sapi.php',
         'ce70dccb4bcc2efc6e94d2ee526e6972' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_method_from_sapi.php',
@@ -15,6 +18,8 @@ class ComposerStaticInite7a9abc80c5a911a1f03fa11b9a02bd2
         '0b0974a5566a1077e4f2e111341112c1' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_server.php',
         '1ca3bc274755662169f9629d5412a1da' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_uploaded_files.php',
         '40360c0b9b437e69bcbb7f1349ce029e' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/parse_cookie_header.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'ef3d9dab4f9e36ea1b6959f291959656' => __DIR__ . '/..' . '/denpa/php-bitcoinrpc/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -31,6 +36,16 @@ class ComposerStaticInite7a9abc80c5a911a1f03fa11b9a02bd2
         'N' => 
         array (
             'Nbobtc\\' => 7,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
+        ),
+        'D' => 
+        array (
+            'Denpa\\Bitcoin\\' => 14,
         ),
     );
 
@@ -54,6 +69,22 @@ class ComposerStaticInite7a9abc80c5a911a1f03fa11b9a02bd2
         'Nbobtc\\' => 
         array (
             0 => __DIR__ . '/..' . '/nbobtc/bitcoind-php/src',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Denpa\\Bitcoin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/denpa/php-bitcoinrpc/src',
         ),
     );
 

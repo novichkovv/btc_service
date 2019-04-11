@@ -1,6 +1,7 @@
 {
     "require": {
         "predis/predis": "^1.1",
-        "nbobtc/bitcoind-php": "^2.1"
+        "nbobtc/bitcoind-php": "^2.1",
+        "denpa/php-bitcoinrpc": "^2.1"
     }
 }
