@@ -35,7 +35,14 @@ class bitcoin_class extends base
 
     public function getWalletInfo()
     {
-        return $this->command('getwalletinfo');
+        $res = $this->command('getwalletinfo');
+        if(isset($res['result'])) {
+            return $res['result'];
+        } else {
+            $this->error($res['error']);
+            return false;
+        }
+
     }
 
     public function getAddressList()
@@ -67,7 +74,6 @@ class bitcoin_class extends base
             $this->error($res['error']);
             return false;
         }
-
     }
 
     public function send($to, $amount, $tx_fee = 0.000001)
