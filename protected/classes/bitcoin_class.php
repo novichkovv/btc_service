@@ -10,12 +10,15 @@ class bitcoin_class extends base
     private $client;
     public function __construct()
     {
+        echo 2222;
         $this->client  = new \Nbobtc\Http\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@127.0.0.1:18332');
     }
 
     private function command($method, $param = null)
     {
+        echo 1111;
         $command = new \Nbobtc\Command\Command($method, $param);
+        echo 333;
         $response = $this->client->sendCommand($command);
         var_dump($response);
         $output   = json_decode($response->getBody()->getContents(), true);
