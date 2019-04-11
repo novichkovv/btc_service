@@ -23,11 +23,11 @@ class addresses_controller extends controller
 
     public function validate()
     {
-//        print_r($_GET);
-//        print_r($_POST);
-//        exit;
         $btc = new bitcoin_class();
         $address = $btc->validateAddress($_GET['address']);
-        $this->success(['response' => $address]);
+        if($address) {
+            $this->success();
+        }
+        $this->fail();
     }
 }
