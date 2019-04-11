@@ -70,9 +70,16 @@ class bitcoin_class extends base
 
     }
 
-    public function sendFrom($from, $to, $amount, $tx_fee = 0.0001)
+    public function send($to, $amount, $tx_fee = 0.000001)
     {
-//        $res = $this->command('settxfee');
+//        $res = $this->command('settxfee', $tx_fee);
+        $res = $this->command('sendtoaddress', [$to, $amount]);
+        print_r($res);
+    }
+
+    public function sendFrom($from, $to, $amount, $tx_fee = 0.000001)
+    {
+        $res = $this->command('settxfee', $tx_fee);
         $res = $this->command('listunspent');
         $txs = [];
         foreach ($res['result'] as $item) {
@@ -83,20 +90,24 @@ class bitcoin_class extends base
                 if($item['amount'] >= $amount + $tx_fee) {
                     $txs[] = [
                         'amount' => $amount,
-                        'tx_id' => $item['txid'],
+                        'id' => $item['txid'],
                     ];
                     $amount = 0;
                     break;
                 } else {
                     $txs[] = [
                         'amount' => $item['amount'] - $tx_fee,
-                        'tx_id' => $item['txid'],
+                        'id' => $item['txid'],
                     ];
                     $amount -= ($item['amount'] - $tx_fee);
                 }
             }
         }
         if($txs) {
+            foreach ($txs as $tx) {
+
+            }
+            $res = $this->command('createrawtransaction', [['txid', $tx['id']]]);
             print_r($txs);
         }
 //        print_r($res);

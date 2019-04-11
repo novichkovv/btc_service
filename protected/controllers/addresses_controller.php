@@ -40,6 +40,6 @@ class addresses_controller extends controller
     public function send()
     {
         $btc = new bitcoin_class();
-        $this->success(['response' => $btc->sendFrom($_GET['from'], $_GET['to'], $_GET['amount'])]);
+        $this->success(['response' => $btc->send($_GET['to'], $_GET['amount'])]);
     }
 }
