@@ -70,7 +70,7 @@ class bitcoin_class extends base
 
     }
 
-    public function sendFrom($from, $to, $amount, $tx_fee = 0.000001)
+    public function sendFrom($from, $to, $amount, $tx_fee = 0.0001)
     {
 //        $res = $this->command('settxfee');
         $res = $this->command('listunspent');
