@@ -95,10 +95,10 @@ class bitcoin_class extends base
                 }
             }
         }
-        if($tx_fee) {
-            print_r($tx_fee);
+        if($txs) {
+            print_r($txs);
         }
-        print_r($res);
+//        print_r($res);
 
         $res = $this->command('sendfrom', [$from, $to, $amount]);
         if(isset($res['result'])) {
