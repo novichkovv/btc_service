@@ -86,6 +86,7 @@ class bitcoin_class extends base
                         'tx_id' => $item['txid'],
                     ];
                     $amount = 0;
+                    break;
                 } else {
                     $txs[] = [
                         'amount' => $item['amount'],
