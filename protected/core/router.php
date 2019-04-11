@@ -15,7 +15,7 @@ class router
         ],
         'addresses/list' => [
             'controller' => 'addresses_controller',
-            'action' => 'generate',
+            'action' => 'list',
             'methods' => ['GET']
         ]
     ];
