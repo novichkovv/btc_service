@@ -12,6 +12,11 @@ class router
             'controller' => 'addresses_controller',
             'action' => 'generate',
             'methods' => ['GET']
+        ],
+        'addresses/list' => [
+            'controller' => 'addresses_controller',
+            'action' => 'generate',
+            'methods' => ['GET']
         ]
     ];
     private $route;
