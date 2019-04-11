@@ -10,21 +10,7 @@ class bitcoin_class extends base
     private $client;
     public function __construct()
     {
-//        require_once PROTECTED_DIR . 'easy.php';
-//        $bitcoin = new Bitcoin(RPC_USER,RPC_PASSWORD,"localhost","18332");
-//        $b = $bitcoin->getwalletinfo();
-//        var_dump($b);exit;
-////        require PROTECTED_DIR . '/vendor/autoload.php';
-////
-////        $this->client = new Denpa\Bitcoin\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@localhost:8332/');
-////        $block = $this->client->request('getwalletinfo');
-////        var_dump($block);exit;
-//        $driver = new \Nbobtc\Http\Driver\CurlDriver();
-//        $driver
-//            ->addCurlOption(CURLOPT_VERBOSE, true)
-//            ->addCurlOption(CURLOPT_STDERR, '/var/logs/curl.err');
         $this->client  = new \Nbobtc\Http\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@127.0.0.1:18332');
-//        $this->client->withDriver($driver);
     }
 
     private function command($method, $param = null)
@@ -52,6 +38,6 @@ class bitcoin_class extends base
 
     public function validateAddress($address)
     {
-        return $this->command('validateaddress', $address);
+        return $this->command('getaddressinfo', $address);
     }
 }
