@@ -10,11 +10,14 @@ class bitcoin_class extends base
     private $client;
     public function __construct()
     {
-        require PROTECTED_DIR . '/vendor/autoload.php';
-
-        $this->client = new Denpa\Bitcoin\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@localhost:8332/');
-        $block = $this->client->request('getwalletinfo');
-        var_dump($block);exit;
+        require_once PROTECTED_DIR . 'easy.php';
+        $bitcoin = new Bitcoin(RPC_USER,RPC_PASSWORD,"localhost","18332");
+        $b = $bitcoin->getwalletinfo();
+//        require PROTECTED_DIR . '/vendor/autoload.php';
+//
+//        $this->client = new Denpa\Bitcoin\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@localhost:8332/');
+//        $block = $this->client->request('getwalletinfo');
+//        var_dump($block);exit;
 //        $driver = new \Nbobtc\Http\Driver\CurlDriver();
 //        $driver
 //            ->addCurlOption(CURLOPT_VERBOSE, true)
