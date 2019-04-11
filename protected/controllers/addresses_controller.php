@@ -18,7 +18,7 @@ class addresses_controller extends controller
     {
         $btc = new bitcoin_class();
         $address = $btc->getAddressList();
-        $this->success(['addresses' => $address]);
+        $this->success(['response' => $address]);
     }
 
     public function validate()

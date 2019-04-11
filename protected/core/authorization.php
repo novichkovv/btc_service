@@ -45,19 +45,18 @@ class authorization extends base
 
     private static function checkNonce($nonce)
     {
+        $time = array_pop(explode('_', $nonce));
         $model = new model();
-        if((time() - $nonce) > self::NONCE_LIFETIME) {
-            $model->set(time(), 1);
-            echo $model->get($nonce);
+        if((time() - $time) > self::NONCE_LIFETIME) {
+            $model->set($nonce, 1);
             return false;
         }
         $nonce = $model->get($nonce);
         if($nonce) {
-            $model->set(time(), 1);
-            echo $model->get($nonce);
+            $model->set($nonce, 1);
             return false;
         }
-        $model->set(time(), 1);
+        $model->set($nonce, 1);
         return true;
     }
 }
