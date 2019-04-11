@@ -11,12 +11,14 @@ class bitcoin_class extends base
     public function __construct()
     {
         require PROTECTED_DIR . '/vendor/autoload.php';
-        $driver = new \Nbobtc\Http\Driver\CurlDriver();
-        $driver
-            ->addCurlOption(CURLOPT_VERBOSE, true)
-            ->addCurlOption(CURLOPT_STDERR, '/var/logs/curl.err');
-        $this->client  = new \Nbobtc\Http\Client('http://127.0.0.1:18332');
-        $this->client->withDriver($driver);
+
+        $bitcoind = new Denpa\Bitcoin\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@localhost:8332/');
+//        $driver = new \Nbobtc\Http\Driver\CurlDriver();
+//        $driver
+//            ->addCurlOption(CURLOPT_VERBOSE, true)
+//            ->addCurlOption(CURLOPT_STDERR, '/var/logs/curl.err');
+//        $this->client  = new \Nbobtc\Http\Client('http://127.0.0.1:18332');
+//        $this->client->withDriver($driver);
     }
 
     private function command($method, $param = null)
