@@ -23,7 +23,7 @@ class bitcoin_class extends base
 //        $driver
 //            ->addCurlOption(CURLOPT_VERBOSE, true)
 //            ->addCurlOption(CURLOPT_STDERR, '/var/logs/curl.err');
-        $this->client  = new \Nbobtc\Http\Client('http://127.0.0.1:18332');
+        $this->client  = new \Nbobtc\Http\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@127.0.0.1:18332');
 //        $this->client->withDriver($driver);
     }
 
