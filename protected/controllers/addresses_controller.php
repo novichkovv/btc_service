@@ -25,6 +25,7 @@ class addresses_controller extends controller
     {
         print_r($_GET);
         print_r($_POST);
+        exit;
         $btc = new bitcoin_class();
         $address = $btc->validateAddress($_GET['address']);
         $this->success(['response' => $address]);
