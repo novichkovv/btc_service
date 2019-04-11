@@ -18,6 +18,7 @@ class bitcoin_class extends base
         $command = new \Nbobtc\Command\Command($method, $param);
         $response = $this->client->sendCommand($command);
         $output   = json_decode($response->getBody()->getContents(), true);
+        $this->errors($output);
         return $output;
     }
 
@@ -43,5 +44,24 @@ class bitcoin_class extends base
             return true;
         }
         return false;
+    }
+
+    private function errors($res)
+    {
+        if(!$res) {
+            $this->error();
+        }
+        if($res['error']) {
+            $this->error($res['error']);
+        }
+    }
+
+    private function error($error = null)
+    {
+        $response = new response();
+        $response->withStatus(400);
+        $response->withContentType('application/json');
+        $response->withJson(['status' => 'fail', 'error' => $error]);
+        $response->respond();
     }
 }
