@@ -23,6 +23,11 @@ class router
             'action' => 'validate',
             'methods' => ['GET']
         ],
+        'addresses/received' => [
+            'controller' => 'addresses_controller',
+            'action' => 'received',
+            'methods' => ['GET']
+        ],
         'wallet/info' => [
             'controller' => 'wallet_controller',
             'action' => 'info',

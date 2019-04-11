@@ -30,4 +30,10 @@ class addresses_controller extends controller
         }
         $this->fail();
     }
+
+    public function received()
+    {
+        $btc = new bitcoin_class();
+        $this->success(['response' => $btc->getReceivedByAddress($_GET['address'], $_GET['min_confirmations'])]);
+    }
 }

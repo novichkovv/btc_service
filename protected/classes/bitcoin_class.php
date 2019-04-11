@@ -39,7 +39,13 @@ class bitcoin_class extends base
 
     public function getAddressList()
     {
-        return $this->command('listaddressgroupings');
+        $res = $this->command('listaddressgroupings');
+        if(!isset($res['result'])) {
+            return $res['result'];
+        } else {
+            $this->error($res['error']);
+            return false;
+        }
     }
 
     public function validateAddress($address)
@@ -49,6 +55,13 @@ class bitcoin_class extends base
             return true;
         }
         return false;
+    }
+
+    public function getReceivedByAddress($address, $min_confirmations = 2)
+    {
+        $res = $this->command('getreceivedbyaddress', [$address, $min_confirmations]);
+        return $res;
+
     }
 
     protected function error($error = 'Unexpected Error!')
