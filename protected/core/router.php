@@ -18,6 +18,11 @@ class router
             'action' => 'list',
             'methods' => ['GET']
         ],
+        'addresses/validate' => [
+            'controller' => 'addresses_controller',
+            'action' => 'validate',
+            'methods' => ['GET']
+        ],
         'wallet/info' => [
             'controller' => 'wallet_controller',
             'action' => 'info',

@@ -49,4 +49,9 @@ class bitcoin_class extends base
     {
         return $this->command('listaddressgroupings');
     }
+
+    public function validateAddress($address)
+    {
+        return $this->command('validateaddress', $address);
+    }
 }
