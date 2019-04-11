@@ -110,8 +110,8 @@ class Bitcoin
         // Build the cURL session
         $curl    = curl_init("{$this->proto}://{$this->host}:{$this->port}/{$this->url}");
         $options = array(
-//            CURLOPT_HTTPAUTH       => CURLAUTH_BASIC,
-//            CURLOPT_USERPWD        => $this->username . ':' . $this->password,
+            CURLOPT_HTTPAUTH       => CURLAUTH_BASIC,
+            CURLOPT_USERPWD        => $this->username . ':' . $this->password,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_MAXREDIRS      => 10,
