@@ -61,7 +61,7 @@ class bitcoin_class extends base
         $response = new response();
         $response->withStatus(400);
         $response->withContentType('application/json');
-        $response->withJson(['status' => 'fail', 'error' => $error]);
+        $response->withJson(['status' => 'error', 'error' => $error]);
         $response->respond();
     }
 }
