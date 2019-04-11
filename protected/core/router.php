@@ -28,6 +28,11 @@ class router
             'action' => 'received',
             'methods' => ['GET']
         ],
+        'addresses/send' => [
+            'controller' => 'addresses_controller',
+            'action' => 'send',
+            'methods' => ['GET']
+        ],
         'wallet/info' => [
             'controller' => 'wallet_controller',
             'action' => 'info',

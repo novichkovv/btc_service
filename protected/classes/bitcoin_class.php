@@ -60,8 +60,25 @@ class bitcoin_class extends base
     public function getReceivedByAddress($address, $min_confirmations = 2)
     {
         $res = $this->command('getreceivedbyaddress', [$address, $min_confirmations]);
-        return $res;
+        if(isset($res['result'])) {
+            return $res['result'];
+        } else {
+            $this->error($res['error']);
+            return false;
+        }
 
+    }
+
+    public function sendFrom($from, $to, $amount)
+    {
+
+        $res = $this->command('sendfrom', [$from, $to, $amount]);
+        if(isset($res['result'])) {
+            return $res['result'];
+        } else {
+            $this->error($res['error']);
+            return false;
+        }
     }
 
     protected function error($error = 'Unexpected Error!')
