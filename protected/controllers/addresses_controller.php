@@ -14,4 +14,12 @@ class addresses_controller extends controller
         $this->success(['address' => $address]);
         $this->success();
     }
+
+    public function list()
+    {
+        $btc = new bitcoin_class();
+        $address = $btc->getAddressList();
+        $this->success(['addresses' => $address]);
+        $this->success();
+    }
 }

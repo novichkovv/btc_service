@@ -37,6 +37,16 @@ class bitcoin_class extends base
 
     public function generateAddress()
     {
+        return $this->command('getnewaddress');
+    }
+
+    public function getWalletInfo()
+    {
         return $this->command('getwalletinfo');
+    }
+
+    public function getAddressList()
+    {
+        return $this->command('listaddressgroupings');
     }
 }
