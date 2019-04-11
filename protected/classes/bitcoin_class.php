@@ -18,7 +18,6 @@ class bitcoin_class extends base
         $command = new \Nbobtc\Command\Command($method, $param);
         $response = $this->client->sendCommand($command);
         $output   = json_decode($response->getBody()->getContents(), true);
-        var_dump($response);
         $this->errors($output);
         return $output;
     }
