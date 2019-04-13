@@ -78,6 +78,8 @@ class bitcoin_class extends base
 
     public function send($to, $amount, $tx_fee = 0.00001)
     {
+        var_dump($to);
+        var_dump($amount);
 //        $this->command('settxfee', $tx_fee);
         $res = $this->command('sendtoaddress', [$to, $amount]);
         if(isset($res['result'])) {
