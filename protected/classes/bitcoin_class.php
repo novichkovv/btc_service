@@ -78,7 +78,7 @@ class bitcoin_class extends base
 
     public function send($to, $amount, $tx_fee = 0.00001)
     {
-        $this->command('settxfee', $tx_fee);
+//        $this->command('settxfee', $tx_fee);
         $res = $this->command('sendtoaddress', [$to, $amount]);
         if(isset($res['result'])) {
             return $res['result'];
@@ -88,7 +88,7 @@ class bitcoin_class extends base
         }
     }
 
-    public function sendFrom($from, $to, $amount, $tx_fee = 0.000001)
+    public function sendFrom($from, $to, $amount, $tx_fee = 0.00001)
     {
         $res = $this->command('settxfee', $tx_fee);
         $res = $this->command('listunspent');
