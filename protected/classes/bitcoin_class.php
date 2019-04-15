@@ -88,9 +88,20 @@ class bitcoin_class extends base
         }
     }
 
+    public function getTransaction($tx_id)
+    {
+        $res = $this->command('gettransaction', $tx_id);
+        if(isset($res['result'])) {
+            return $res['result'];
+        } else {
+            $this->error($res['error']);
+            return false;
+        }
+    }
+
     public function sendFrom($from, $to, $amount, $tx_fee = 0.00001)
     {
-        $res = $this->command('settxfee', $tx_fee);
+        $this->command('settxfee', $tx_fee);
         $res = $this->command('listunspent');
         $txs = [];
         foreach ($res['result'] as $item) {
