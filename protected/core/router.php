@@ -37,7 +37,12 @@ class router
             'controller' => 'wallet_controller',
             'action' => 'info',
             'methods' => ['GET']
-        ]
+        ],
+        'transactions/info' => [
+            'controller' => 'transactions_controller',
+            'action' => 'info',
+            'methods' => ['GET']
+        ],
     ];
     private $route;
 

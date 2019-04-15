@@ -5,7 +5,7 @@
  * Date: 15/04/2019
  * Time: 11:59
  */
-class transaction_controller extends controller
+class transactions_controller extends controller
 {
     public function info()
     {
