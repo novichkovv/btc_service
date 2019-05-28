@@ -9,7 +9,6 @@ class fake_controller extends controller
 {
     public function proceed()
     {
-        echo 1111;exit;
         $fake = new fake_class();
         $fake->proceed($_GET['last_block']);
     }
