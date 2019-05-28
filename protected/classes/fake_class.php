@@ -36,6 +36,7 @@ class fake_class extends base
                             ];
                         }
                     }
+                    echo $i;
                     if($i == 100) {
                         break;
                     }
