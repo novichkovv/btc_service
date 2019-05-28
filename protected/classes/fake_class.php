@@ -20,7 +20,7 @@ class fake_class extends base
         set_time_limit(300);
         $bitcoin = new bitcoin_class();
         $blockchain = $bitcoin->getBlockChainInfo();
-        $last_block = $blockchain['blocks'] - 2;
+        $last_block = $blockchain['blocks'] - 3;
         $res = [];
         if($last_block > $last_checked_block) {
             $hash = $bitcoin->getBlockHash($last_block);
