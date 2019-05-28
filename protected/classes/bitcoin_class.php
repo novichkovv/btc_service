@@ -101,6 +101,7 @@ class bitcoin_class extends base
 
     public function getBlockChainInfo()
     {
+        echo 111;
         $res = $this->command('getblockchaininfo');
         var_dump($res);
         exit;
