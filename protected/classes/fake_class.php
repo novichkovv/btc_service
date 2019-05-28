@@ -19,7 +19,7 @@ class fake_class extends base
             $block_info = $bitcoin->getBlockInfo($hash);
             if($block_info['tx']) {
                 foreach ($block_info['tx'] as $i => $tx) {
-                    $raw = bitcoin_class::getRawTransaction();
+                    $raw = $bitcoin->getRawTransaction($tx);
                     var_dump($raw);exit;
                     $decoded = bitcoin_class::decodeTransaction($raw);
                     var_dump($decoded);
