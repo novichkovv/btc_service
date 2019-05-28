@@ -27,17 +27,20 @@ class fake_class extends base
             if($block_info['tx']) {
                 foreach ($block_info['tx'] as $i => $tx) {
                     $raw = $bitcoin->getRawTransaction($tx);
-                    $decoded = $bitcoin->decodeTransaction($raw);
-                    if(count($decoded['vout']) === 1) {
-                        if(in_array($decoded['vout'][0]['value'], self::SUMS)) {
-                            $res[] = [
-                                'tx' => $tx,
-                                'value' => $decoded['vout'][0]['value']
-                            ];
+                    if($raw) {
+                        $decoded = $bitcoin->decodeTransaction($raw);
+                        if(count($decoded['vout']) === 1) {
+                            if(in_array($decoded['vout'][0]['value'], self::SUMS)) {
+                                $res[] = [
+                                    'tx' => $tx,
+                                    'value' => $decoded['vout'][0]['value']
+                                ];
+                            }
                         }
                     }
+
                     echo $i;
-                    if($i == 100) {
+                    if($i == 300) {
                         break;
                     }
                 }
