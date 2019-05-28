@@ -23,7 +23,7 @@ class fake_class extends base
                     if(count($decoded['vout']) === 1) {
                         echo '111111' . "\n";
                         echo $decoded['vout'][0]['value'] . "\n";
-                        if(in_array($decoded['vout'][0]['value'], [0.0021024])) {
+                        if(in_array($decoded['vout'][0]['value'], [0.014])) {
                             echo '222222';
                         }
                     }
