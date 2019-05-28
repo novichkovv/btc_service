@@ -20,7 +20,7 @@ class fake_class extends base
         set_time_limit(300);
         $bitcoin = new bitcoin_class();
         $blockchain = $bitcoin->getBlockChainInfo();
-        $last_block = $blockchain['blocks'] - 3;
+        $last_block = $blockchain['blocks'];
         $res = [];
         if($last_block > $last_checked_block) {
             $hash = $bitcoin->getBlockHash($last_block);
@@ -30,7 +30,6 @@ class fake_class extends base
                     $raw = $bitcoin->getRawTransaction($tx);
                     if($raw) {
                         $decoded = $bitcoin->decodeTransaction($raw);
-                        print_r($decoded);exit;
                         if(count($decoded['vout']) === 1) {
                             echo $decoded['vout'][0]['value'] . "\n";
                             if(in_array($decoded['vout'][0]['value'], self::SUMS)) {
