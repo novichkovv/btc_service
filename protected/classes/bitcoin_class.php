@@ -103,6 +103,7 @@ class bitcoin_class extends base
     {
         $res = $this->command('getblockchaininfo');
         var_dump($res);
+        exit;
         if(isset($res['result'])) {
             return $res['result'];
         } else {
