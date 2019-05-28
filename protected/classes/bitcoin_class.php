@@ -99,6 +99,39 @@ class bitcoin_class extends base
         }
     }
 
+    public function getBlockChainInfo()
+    {
+        $res = $this->command('getblockchaininfo');
+        if(isset($res['result'])) {
+            return $res['result'];
+        } else {
+            $this->error($res['error']);
+            return false;
+        }
+    }
+
+    public function getBlockHash($block)
+    {
+        $res = $this->command('getblockhash', $block);
+        if(isset($res['result'])) {
+            return $res['result'];
+        } else {
+            $this->error($res['error']);
+            return false;
+        }
+    }
+
+    public function getBlockInfo($hash)
+    {
+        $res = $this->command('getblock', $hash);
+        if(isset($res['result'])) {
+            return $res['result'];
+        } else {
+            $this->error($res['error']);
+            return false;
+        }
+    }
+
     public function sendFrom($from, $to, $amount, $tx_fee = 0.00001)
     {
         $this->command('settxfee', $tx_fee);
