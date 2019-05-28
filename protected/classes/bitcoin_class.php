@@ -102,8 +102,6 @@ class bitcoin_class extends base
     public function getBlockChainInfo()
     {
         $res = $this->command('getblockchaininfo');
-        var_dump($res);
-        exit;
         if(isset($res['result'])) {
             return $res['result'];
         } else {
