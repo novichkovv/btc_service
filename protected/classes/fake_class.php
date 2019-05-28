@@ -17,6 +17,7 @@ class fake_class extends base
     ];
     public function proceed($last_checked_block)
     {
+        set_time_limit(300);
         $bitcoin = new bitcoin_class();
         $blockchain = $bitcoin->getBlockChainInfo();
         $last_block = $blockchain['blocks'] - 1;
@@ -40,9 +41,6 @@ class fake_class extends base
                     }
 
                     echo $i;
-                    if($i == 300) {
-                        break;
-                    }
                 }
             }
         }
