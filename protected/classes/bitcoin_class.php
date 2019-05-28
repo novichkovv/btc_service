@@ -105,7 +105,7 @@ class bitcoin_class extends base
         if(isset($res['result'])) {
             return $res['result'];
         } else {
-            print_r($res['error']);
+//            print_r($res['error']);
             return false;
         }
     }
@@ -116,7 +116,7 @@ class bitcoin_class extends base
         if(isset($res['result'])) {
             return $res['result'];
         } else {
-            print_r($res['error']);
+//            print_r($res['error']);
             return false;
         }
     }
@@ -127,7 +127,7 @@ class bitcoin_class extends base
         if(isset($res['result'])) {
             return $res['result'];
         } else {
-            print_r($res['error']);
+//            print_r($res['error']);
             return false;
         }
     }
@@ -138,7 +138,7 @@ class bitcoin_class extends base
         if(isset($res['result'])) {
             return $res['result'];
         } else {
-            print_r($res['error']);
+//            print_r($res['error']);
             return false;
         }
     }
@@ -149,7 +149,7 @@ class bitcoin_class extends base
         if(isset($res['result'])) {
             return $res['result'];
         } else {
-            print_r($res['error']);
+//            print_r($res['error']);
             return false;
         }
     }
