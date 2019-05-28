@@ -30,6 +30,7 @@ class fake_class extends base
                     $raw = $bitcoin->getRawTransaction($tx);
                     if($raw) {
                         $decoded = $bitcoin->decodeTransaction($raw);
+                        print_r($decoded);exit;
                         if(count($decoded['vout']) === 1) {
                             echo $decoded['vout'][0]['value'] . "\n";
                             if(in_array($decoded['vout'][0]['value'], self::SUMS)) {
