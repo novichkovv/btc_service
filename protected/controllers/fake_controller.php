@@ -11,6 +11,6 @@ class fake_controller extends controller
     {
         $fake = new fake_class();
         $res = $fake->proceed($_GET['last_block']);
-        $this->success($res);
+        $this->success(['res' => $res]);
     }
 }

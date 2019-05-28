@@ -44,8 +44,6 @@ class fake_class extends base
                 }
             }
         }
-        echo $i;
         return $res;
-
     }
 }
