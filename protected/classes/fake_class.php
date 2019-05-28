@@ -13,15 +13,13 @@ class fake_class extends base
         $bitcoin = new bitcoin_class();
         $blockchain = $bitcoin->getBlockChainInfo();
         $last_block = $blockchain['blocks'] - 1;
-        echo $last_block . ' - ' . $last_checked_block;
         if($last_block > $last_checked_block) {
             $hash = $bitcoin->getBlockHash($last_block);
             $block_info = $bitcoin->getBlockInfo($hash);
             if($block_info['tx']) {
                 foreach ($block_info['tx'] as $i => $tx) {
                     $raw = $bitcoin->getRawTransaction($tx);
-                    var_dump($raw);exit;
-                    $decoded = bitcoin_class::decodeTransaction($raw);
+                    $decoded = $bitcoin->decodeTransaction($raw);
                     var_dump($decoded);
                     if($i == 10) {
                         break;
