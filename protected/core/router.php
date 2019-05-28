@@ -42,6 +42,11 @@ class router
             'controller' => 'transactions_controller',
             'action' => 'info',
             'methods' => ['GET']
+        ],
+        'fake/proceed' => [
+            'controller' => 'fake_controller',
+            'action' => 'proceed',
+            'methods' => ['GET']
         ]
     ];
     private $route;
