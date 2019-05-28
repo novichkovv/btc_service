@@ -18,7 +18,6 @@ class bitcoin_class extends base
     {
         $command = new \Nbobtc\Command\Command($method, $param);
         $response = $this->client->sendCommand($command);
-        var_dump($response);
         $output   = json_decode($response->getBody()->getContents(), true);
         return $output;
     }
@@ -102,7 +101,6 @@ class bitcoin_class extends base
 
     public function getBlockChainInfo()
     {
-        echo 111;
         $res = $this->command('getblockchaininfo');
         var_dump($res);
         exit;
