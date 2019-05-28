@@ -16,9 +16,18 @@ class fake_class extends base
         echo $last_block . ' - ' . $last_checked_block;
         if($last_block > $last_checked_block) {
             $hash = $bitcoin->getBlockHash($last_block);
-            print_r($hash);
             $block_info = $bitcoin->getBlockInfo($hash);
-            print_r($block_info);
+            if($block_info['tx']) {
+                foreach ($block_info['tx'] as $i => $tx) {
+                    $raw = bitcoin_class::getRawTransaction();
+                    var_dump($raw);exit;
+                    $decoded = bitcoin_class::decodeTransaction($raw);
+                    var_dump($decoded);
+                    if($i == 10) {
+                        break;
+                    }
+                }
+            }
         }
         exit;
 

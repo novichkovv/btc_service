@@ -110,6 +110,18 @@ class bitcoin_class extends base
         }
     }
 
+    public function getRawTransaction($tx_id)
+    {
+        $res = $this->command('getrawtransaction', $tx_id);
+        var_dump($res);
+        if(isset($res['result'])) {
+            return $res['result'];
+        } else {
+            $this->error($res['error']);
+            return false;
+        }
+    }
+
     public function getBlockHash($block)
     {
         $res = $this->command('getblockhash', $block);
