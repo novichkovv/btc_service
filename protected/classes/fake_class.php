@@ -20,7 +20,7 @@ class fake_class extends base
                 foreach ($block_info['tx'] as $i => $tx) {
                     $raw = $bitcoin->getRawTransaction($tx);
                     $decoded = $bitcoin->decodeTransaction($raw);
-                    var_dump($decoded);
+                    print_r($decoded);
                     if($i == 10) {
                         break;
                     }
