@@ -12,10 +12,11 @@ class fake_class extends base
 
         $bitcoin = new bitcoin_class();
         $blockchain = $bitcoin->getBlockChainInfo();
-        print_r($blockchain);
-        $last_block = $blockchain['blocks'] - 1;
+//        print_r($blockchain);
+        $last_block = $blockchain['result']['blocks'] - 1;
         if($last_block > $last_checked_block) {
             $hash = $bitcoin->getBlockHash($last_block);
+            print_r($hash);
             $block_info = $bitcoin->getBlockInfo($hash);
             print_r($block_info);
         }
