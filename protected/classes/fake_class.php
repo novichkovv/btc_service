@@ -22,10 +22,10 @@ class fake_class extends base
                     $decoded = $bitcoin->decodeTransaction($raw);
                     if(count($decoded['vout']) === 1) {
                         if(in_array($decoded['vout'][0]['value'], [0.0021024])) {
-                            print_r($decoded);
+                            echo '1111111222222';
                         }
                     }
-//                    print_r($decoded);
+                    print_r($decoded);
                     if($i == 10) {
                         break;
                     }
