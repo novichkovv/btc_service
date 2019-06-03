@@ -11,7 +11,8 @@ class bitcoin_class extends base
     const MIN_CONFIRMATIONS = 2;
     public function __construct()
     {
-        $this->client = new \Nbobtc\Http\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@127.0.0.1:8332');
+        $port = TEST_MODE === false ? 8332 : 18332;
+        $this->client = new \Nbobtc\Http\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@127.0.0.1:' . $port);
     }
 
     private function command($method, $param = null)
