@@ -21,6 +21,7 @@ class bitcoin_class extends base
     {
         $command = new \Nbobtc\Command\Command($method, $param);
         $response = $this->client->sendCommand($command);
+        var_dump($response->getBody()->getContents());
         $output   = json_decode($response->getBody()->getContents(), true);
         return $output;
     }
@@ -62,7 +63,6 @@ class bitcoin_class extends base
     public function validateAddress($address)
     {
         $res = $this->command('getaddressinfo', $address);
-        var_dump($res);
         if(!empty($res['result']['address'])) {
             return true;
         }
