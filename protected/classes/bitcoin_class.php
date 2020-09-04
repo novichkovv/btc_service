@@ -62,11 +62,8 @@ class bitcoin_class extends base
 
     public function validateAddress($address)
     {
-        $res = $this->command('getaddressinfo', $address);
-        if(!empty($res['result']['address'])) {
-            return true;
-        }
-        return false;
+        $res = $this->command('validateaddress', $address);
+        return $res['isvalid'];
     }
 
     public function getReceivedByAddress($address, $min_confirmations = 2)
