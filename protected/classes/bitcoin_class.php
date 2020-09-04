@@ -13,7 +13,8 @@ class bitcoin_class extends base
     {
         require_once PROTECTED_DIR . 'vendor/autoload.php';
         $port = TEST_MODE === false ? 8332 : 18332;
-        $this->client = new \Nbobtc\Http\Client('http://' . RPC_USER . ':' . RPC_PASSWORD . '@127.0.0.1:' . $port);
+        $dsn = 'http://' . RPC_USER . ':' . RPC_PASSWORD . '@' . NODE_IP . ':' . $port;
+        $this->client = new \Nbobtc\Http\Client($dsn);
     }
 
     private function command($method, $param = null)
@@ -61,6 +62,7 @@ class bitcoin_class extends base
     public function validateAddress($address)
     {
         $res = $this->command('getaddressinfo', $address);
+        var_dump($res);
         if(!empty($res['result']['address'])) {
             return true;
         }
