@@ -26,6 +26,14 @@ function autoload($class_name)
 //            break;
         default:
             $class_file = PROTECTED_DIR . $folder . DS . $class_name . '.php';
+            if(!file_exists($class_file)) {
+                $class_file = PROTECTED_DIR . 'objects' . DS . $class_name . '.php';
+            }
+            if(!file_exists($class_file)) {
+                $arr = explode('_', $class_name);
+                $sub_folder = array_shift($arr);
+                $class_file = PROTECTED_DIR . 'objects' . DS . $sub_folder . DS . $class_name . '.php';
+            }
             break;
     }
     if (file_exists($class_file)) {
