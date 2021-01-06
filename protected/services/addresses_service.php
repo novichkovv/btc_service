@@ -37,10 +37,13 @@ class addresses_service
             $transaction = new Transaction($item);
             $btc = new bitcoin_class();
             $net = $btc->getTransaction($transaction->getTxId());
-            if($net['confirmations'] > 3) {
+            if($net['confirmations'] >= 3) {
                 $queue = new Queue();
                 $queue->add($transaction->getAddressTo(), $transaction->getAmount());
                 $transaction->confirm();
+                $balance = maths_class::plus($transaction->getAmount(), $transaction->getAddressTo()->getBalance(), 8);
+                $transaction->getAddressTo()->setBalance($balance);
+                $transaction->getAddressTo()->setHasBalance();
             } else {
                 $transaction->updateLastCheck();
             }
