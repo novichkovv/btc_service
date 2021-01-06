@@ -13,4 +13,4 @@ try {
     staticBase::writeLog('queue_runner', $e->getCode());
     staticBase::writeLog('queue_runner', $e->getTraceAsString());
 }
-//sleep(10);
+sleep(10);

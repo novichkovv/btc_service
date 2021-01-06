@@ -10,7 +10,6 @@ class Transaction
     private $net_data;
     public function __construct(array $db_array = null)
     {
-        print_r($db_array);
         if(null !== $db_array) {
             $this->transaction = $db_array;
         }
