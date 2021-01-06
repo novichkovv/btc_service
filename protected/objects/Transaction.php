@@ -96,7 +96,7 @@ class Transaction
         $this->transaction['address_to'] = $address;
     }
 
-    public function setAmount(string $amount) : void
+    public function setAmount($amount) : void
     {
         $this->transaction['amount'] = $amount;
     }
