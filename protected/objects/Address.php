@@ -93,7 +93,6 @@ class Address
         $row = [
             'id' => $this->address['id'],
             'balance' => $new_balance,
-            'has_balance' => 0
         ];
         staticBase::model('addresses')->insert($row);
     }
