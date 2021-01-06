@@ -107,4 +107,14 @@ class Time
         $this->time -= $days * 24 * 3600;
     }
 
+    public function plusMinutes(int $days)
+    {
+        $this->time += $days * 3600;
+    }
+
+    public function minusMinutes(int $days)
+    {
+        $this->time -= $days * 3600;
+    }
+
 }

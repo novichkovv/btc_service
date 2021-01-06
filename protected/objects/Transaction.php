@@ -6,8 +6,8 @@ class Transaction
     const STATUS_UNLOCKED = 0;
     const TYPE_IN = 'in';
     const TYPE_OUT = 'out';
-    private array $transaction;
-    private ?\FurqanSiddiqui\Ethereum\RPC\Models\Transaction $net_data = null;
+    private $transaction;
+    private $net_data;
     public function __construct(array $db_array = null)
     {
         if(null !== $db_array) {
@@ -16,9 +16,13 @@ class Transaction
         $this->transaction['status_id'] = self::STATUS_UNLOCKED;
     }
 
-    public function setSymbol(string $symbol)
+    public function transactionExists($tx_id) : bool
     {
-        $this->transaction['symbol'] = $symbol;
+        if($t = staticBase::model('transactions')->getByField('tx_id', $tx_id)) {
+            $this->transaction = $t;
+            return true;
+        }
+        return false;
     }
 
     public function setFrom(string $address) : void
@@ -31,6 +35,11 @@ class Transaction
         $this->transaction['locked_address'] = $address->getId();
     }
 
+    public function getAmount() : string
+    {
+        return $this->transaction['amount'];
+    }
+
     public function getLockedAddress() : ?Address
     {
         if(!empty($this->transaction['locked_address'])) {
@@ -41,7 +50,30 @@ class Transaction
         return null;
     }
 
-    public function setNetData(\FurqanSiddiqui\Ethereum\RPC\Models\Transaction $transaction)
+    public function getAddressTo() : Address
+    {
+        $address = new Address();
+        $address->setByAddress($this->transaction['address_to']);
+        return $address;
+    }
+
+    public function updateLastCheck() :void
+    {
+        staticBase::model('transactions')->insert([
+            'id' => $this->transaction['id'],
+            'last_checked' => tools_class::gmDate()
+        ]);
+    }
+
+    public function confirm() :void
+    {
+        staticBase::model('transactions')->insert([
+            'id' => $this->transaction['id'],
+            'confirmed' => 1
+        ]);
+    }
+
+    public function setNetData($transaction)
     {
         $this->net_data = $transaction;
     }
@@ -82,19 +114,17 @@ class Transaction
         $this->transaction['tx_id'] = $tx_id;
     }
 
-    public function getSymbol()
+    public function getTxId() : string
     {
-        return $this->transaction['symbol'];
+        return $this->transaction['tx_id'];
     }
 
     public function save() : void
     {
         $this->transaction;
         $this->transaction['created_at'] = tools_class::gmDate();
-        if($this->net_data !== null) {
-            $this->transaction['gas'] = $this->net_data->gas;
-            $this->transaction['gas_price'] = $this->net_data->gasPrice;
-        }
+        $this->transaction['confirmed'] = 0;
+        $this->transaction['last_checked'] = tools_class::gmDate();
         $this->transaction['id'] = staticBase::model('transactions')->insert($this->transaction);
     }
 }

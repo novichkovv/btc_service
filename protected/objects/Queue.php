@@ -15,7 +15,6 @@ class Queue
         $this->item = [
             'address' => $address->getAddress(),
             'amount' => $amount,
-            'token' => $address->getSymbol(),
             'status_id' => self::STATUS_NEW,
             'created_at' => tools_class::gmDate()
         ];
@@ -30,7 +29,7 @@ class Queue
 
     public function getToken() : string
     {
-        return $this->item['token'];
+        return 'btc';
     }
 
     public function getAddress() : string
