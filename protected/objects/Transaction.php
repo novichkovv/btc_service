@@ -18,7 +18,10 @@ class Transaction
 
     public function transactionExists($tx_id) : bool
     {
-        if($t = staticBase::model('transactions')->getByField('tx_id', $tx_id)) {
+        if($t = staticBase::model('transactions')->getByFields([
+            'tx_id' => $tx_id,
+            'confirmed' => 0
+        ])) {
             $this->transaction = $t;
             return true;
         }
