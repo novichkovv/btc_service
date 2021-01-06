@@ -41,7 +41,6 @@ class addresses_service
                 $queue->add($transaction->getAddressTo(), $transaction->getAmount());
                 $transaction->confirm();
                 $balance = maths_class::plus($transaction->getAmount(), $transaction->getAddressTo()->getBalance(), 8);
-                var_dump($balance);
                 $transaction->getAddressTo()->setBalance($balance);
                 $transaction->getAddressTo()->setHasBalance();
             } else {
