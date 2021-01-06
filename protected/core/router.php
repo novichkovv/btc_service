@@ -23,7 +23,7 @@ class router
             'action' => 'validate',
             'methods' => ['GET']
         ],
-        'addresses/received' => [
+        'addresses/balance' => [
             'controller' => 'addresses_controller',
             'action' => 'received',
             'methods' => ['GET']
