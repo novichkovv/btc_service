@@ -8,7 +8,7 @@ class addresses_service
         $transaction = $btc->getTransaction($tx_id);
         $to = $transaction['details'][0]['address'];
         $amount = $transaction['amount'];
-        $address = new address();
+        $address = new Address();
         try {
             $address->setByAddress($to);
             $transaction = new Transaction();
