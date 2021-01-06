@@ -7,6 +7,7 @@ class addresses_service
         $btc = new bitcoin_class();
         $transaction = $btc->getTransaction($tx_id);
         $to = $transaction['details'][0]['address'];
+        var_dump($to);
         $amount = $transaction['amount'];
         $address = new Address();
         try {
@@ -22,7 +23,7 @@ class addresses_service
             $transaction->setType(Transaction::TYPE_IN);
             $transaction->save();
         } catch (Exception $e) {
-            echo 'eee - ' . $e;
+            echo $e->getMessage();
         }
     }
 
