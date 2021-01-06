@@ -95,9 +95,6 @@ class Address
             'balance' => $new_balance,
             'has_balance' => 0
         ];
-        if(maths_class::moreThan($new_balance, '0', 12)) {
-            $row['has_balance'] = 1;
-        }
         staticBase::model('addresses')->insert($row);
     }
 }
