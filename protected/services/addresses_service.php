@@ -33,9 +33,7 @@ class addresses_service
                 $transaction = new Transaction($item);
             }
         }
-        var_dump($transaction);
         if(null !== $transaction) {
-            $transaction = new Transaction($item);
             $btc = new bitcoin_class();
             $net = $btc->getTransaction($transaction->getTxId());
             if($net['confirmations'] >= 3) {
