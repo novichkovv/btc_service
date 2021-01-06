@@ -12,7 +12,8 @@ class transactions_model extends model
                 transactions
             WHERE
                 confirmed = 0 AND last_checked < "' . $date->getGMTDateTime() . '"
+            ORDER by last_checked
         ');
-        return $this->get_all($stm);
+        return $this->get_row($stm);
     }
 }
