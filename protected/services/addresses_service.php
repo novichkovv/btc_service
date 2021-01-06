@@ -22,7 +22,7 @@ class addresses_service
             $transaction->setType(Transaction::TYPE_IN);
             $transaction->save();
         } catch (Exception $e) {
-
+            echo 'eee - ' . $e;
         }
     }
 
