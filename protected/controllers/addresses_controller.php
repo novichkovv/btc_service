@@ -11,7 +11,12 @@ class addresses_controller extends controller
     {
         $btc = new bitcoin_class();
         $address = $btc->generateAddress();
-        $this->success(['address' => $address]);
+        $Address = new Address();
+        $Address->create($address);
+        $this->success(['data' => [
+            'address' => $address
+        ]]);
+        $this->success(['data' => ['address' => $address]]);
     }
 
     public function list()

@@ -5,17 +5,9 @@ class Address
     const STATUS_UNLOCKED = 0;
     const STATUS_LOCKED = 1;
 
-    private ?token $token;
-    private array $address;
-    private Password $password;
-    public function __construct(token $token = null)
+    private $address;
+    public function __construct()
     {
-        $this->token = $token;
-    }
-
-    public function getSymbol() : string
-    {
-        return $this->token !== null ? $this->token->getSymbol() : 'eth';
     }
 
     public function getId() : int
@@ -23,13 +15,10 @@ class Address
         return (int) $this->address['id'];
     }
 
-    public function create(string $address, Password $password) : void
+    public function create(string $address) : void
     {
-        $this->password = $password;
         $id = staticBase::model('addresses')->insert([
             'address' => $address,
-            'address_password' => $password->getEncoded(),
-            'symbol' => $this->getSymbol(),
             'generated_at' => tools_class::gmDate()
         ]);
         $this->address = staticBase::model('addresses')->getById($id);
@@ -59,7 +48,6 @@ class Address
         if(!$this->address = staticBase::model('addresses')->getByField('address', $address)) {
             throw new Exception('Address does not exist');
         }
-        $this->password = new Password($this->address['address_password']);
     }
 
     public function setById($id) : void
@@ -67,23 +55,16 @@ class Address
         if(!$this->address = staticBase::model('addresses')->getById($id)) {
             throw new Exception('Address does not exist');
         }
-        $this->password = new Password($this->address['address_password']);
     }
 
     public function setFromDb(array $db_array) : void
     {
         $this->address = $db_array;
-        $this->password = new Password($this->address['address_password']);
     }
 
     public function getBalance() : string
     {
         return $this->address['balance'];
-    }
-
-    public function getPassword() : string
-    {
-        return $this->password->getDecoded();
     }
 
     public function getAddress() : string
