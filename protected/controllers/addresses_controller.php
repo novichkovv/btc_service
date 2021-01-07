@@ -31,7 +31,7 @@ class addresses_controller extends controller
         $btc = new bitcoin_class();
         $address = $btc->validateAddress($_GET['address']);
         if($address) {
-            $this->success();
+            $this->success(['data' => ['is_valid' => true]]);
         }
         $this->fail();
     }
